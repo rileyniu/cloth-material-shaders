@@ -75,7 +75,7 @@ Shader "Custom/test1" {
 				fixed specular = saturate(dot(reflDir, lightDir));
 				// sample the texture
 				fixed4 col = tex2D(_MainTex, i.uv) * _Color;
-				float p1 = tex2D(_NoiseTex, i.uv2 + float2(0             , _Time.y * 2.47 * _AnimSpeed ));
+				float p1 = tex2D(_NoiseTex, i.uv2 + float2(0             , _Time.y * 1.17 * _AnimSpeed ));
 				float p2 = tex2D(_NoiseTex, i.uv2 + float2( _Time.y * 1.54  * _AnimSpeed, 0 ));
 
 				float sum = (p1+p2) + specular* 0.1;
