@@ -3,8 +3,6 @@
 		
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_Color ("Color", Color) = (1,1,1,1)
-		// _Glossiness ("Smoothness", Range(0,1)) = 0.5
-		// _Metallic ("Metallic", Range(0,1)) = 0.0
 		_IridescentTileValue("Iridescent Tile Value", Range(0,1)) = .1
 		_Saturation("Saturation", Range(0,1)) = .5
 		_FresnelPow("Fresnel Power", Range(0,1)) = .5
@@ -13,8 +11,8 @@
 		_MinOpacity("Minimum Opacity", Range(0, 1))=.8
 		_RimColor ("Rim Color", Color) = (1,1,1,1)
 		_IridescentColor ("Iridescent Color", Color) = (1,1,1,1)
-		_SpecularPowerA("Specular Power", Range(1, 10)) = .5
-		_SpecularPowerB("Specular Range", Range(1, 10)) = .5
+		_SpecularPowerA("Specular Power", Range(0, 5)) = .5
+		_SpecularPowerB("Specular Range", Range(1, 5)) = 5
 		_ReflectTex ("Reflection Texture", Cube) = "" { }
 
 	}
@@ -106,8 +104,8 @@
 			// Cube Map
 			float3 reflectedDir = reflect(-viewDir, s.Normal);
 	        fixed4 reflectCol = texCUBE(_ReflectTex, reflectedDir);
-			reflectCol = pow(reflectCol, 2); //Gamma correction
-			final = lerp(final, reflectCol*final, .25);
+			reflectCol = pow(reflectCol, 2.2); //Gamma correction
+			final = lerp(final, reflectCol*final, .6);
 
 			// Saturation
 			float3 intensity = dot(final.rgb, float3(0.299,0.587,0.114));
